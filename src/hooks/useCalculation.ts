@@ -60,9 +60,10 @@ const useCalculation = (): UseCalculationReturn => {
     let i,
       number = 1;
     const triangularNumbersArray: number[] = [];
-    for (i = 0; i < LENGTH_OF_SERIES; i++) {
+    for (i = 0; i < LENGTH_OF_SERIES; ) {
       if (isTriangularNumber(number)) {
         triangularNumbersArray.push(number);
+        i++;
       }
       number++;
     }
@@ -71,19 +72,23 @@ const useCalculation = (): UseCalculationReturn => {
   };
 
   const calculatePrimeNumbers = (): number[] => {
-    const isPrimeArray = new Array(LENGTH_OF_SERIES).fill(true);
+    // MAX_SIZE allows us to increment the amount of prime numbers
+    // which if way longer than LENGTH_OF_SERIES. This value was
+    // taken from experimentation
+    const MAX_SIZE = 10 * LENGTH_OF_SERIES;
+    const isPrimeArray = new Array(MAX_SIZE).fill(true);
     const primesArray: number[] = [];
     let prime, i;
 
-    for (prime = 2; prime * prime < LENGTH_OF_SERIES; prime++) {
+    for (prime = 2; prime * prime < MAX_SIZE; prime++) {
       if (isPrimeArray[prime] == true) {
-        for (i = prime * prime; i < LENGTH_OF_SERIES; i += prime) {
+        for (i = prime * prime; i < MAX_SIZE; i += prime) {
           isPrimeArray[i] = false;
         }
       }
     }
 
-    for (prime = 2; prime < LENGTH_OF_SERIES; prime++)
+    for (prime = 2; prime < MAX_SIZE; prime++)
       if (isPrimeArray[prime]) primesArray.push(prime);
 
     return primesArray;
@@ -94,10 +99,11 @@ const useCalculation = (): UseCalculationReturn => {
   const triangleNumbers = useMemo(() => calculateTriangleNumbers(), []);
 
   const getNthTermFibonacciSeries = (nthTerm: number): number =>
-    fibonacciSeries[nthTerm];
-  const getNthPrimeNumber = (nthTerm: number): number => primeNumbers[nthTerm];
+    nthTerm >= 0 ? fibonacciSeries[nthTerm] : 0;
+  const getNthPrimeNumber = (nthTerm: number): number =>
+    nthTerm >= 0 ? primeNumbers[nthTerm] : 0;
   const getNthTriangularNumber = (nthTerm: number): number =>
-    triangleNumbers[nthTerm];
+    nthTerm >= 0 ? triangleNumbers[nthTerm] : 0;
 
   return {
     getNthTermFibonacciSeries,
