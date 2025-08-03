@@ -11,6 +11,7 @@ interface ContainerProps {
     | 'between'
     | 'around'
     | 'evenly';
+  className?: string;
 }
 
 const Container: React.FC<ContainerProps> = ({
@@ -19,10 +20,11 @@ const Container: React.FC<ContainerProps> = ({
   isColumnArranged,
   alignItems,
   justifyContent,
+  className,
 }) => {
   return (
     <div
-      className={`w-full flex ${isColumnArranged ? 'flex-col' : ''} ${alignItems ? `items-${alignItems}` : ''} ${justifyContent ? `justify-${justifyContent}` : ''} ${gap ? gap : 'gap-4'}`}
+      className={`w-full flex ${isColumnArranged ? 'flex-col' : ''} ${alignItems ? `items-${alignItems}` : ''} ${justifyContent ? `justify-${justifyContent}` : ''} ${gap ? gap : 'gap-4'} ${className && className}`}
     >
       {children}
     </div>

@@ -1,5 +1,6 @@
 import Card from './components/Card';
 import Container from './components/Container';
+import NumberSelector from './components/NumberSelector';
 import './App.css';
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
                 <li className="flex justify-start gap-x-6 py-5 text-gray-600 text-left">
                   <span className="font-medium text-gray-800">3.</span>
                   <span>
-                    If you used the increment/decrement buttons, the computed
+                    If you used the increment/decrement buttons, the computed{' '}
                     <span className="italic">n-th term</span> will be
                     automatically updated. Otherwise, you'll have to click on
                     the{' '}
@@ -68,7 +69,11 @@ function App() {
             </Card>
           </Container>
           <Card>
-            <p>The selector</p>
+            <h4 className="text-2xl text-gray-800">
+              Enter a number to calculate the{' '}
+              <span className="italic">n-th term</span>
+            </h4>
+            <NumberSelector />
           </Card>
         </Container>
       </div>
