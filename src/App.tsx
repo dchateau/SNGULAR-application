@@ -1,13 +1,19 @@
+import { useState } from 'react';
 import Card from './components/Card';
 import Container from './components/Container';
 import NumberSelector from './components/NumberSelector';
+import ResultViewer from './components/ResultViewer';
 import './App.css';
 
 function App() {
+  const [enteredNumber, setEnteredNumber] = useState(1);
+  const changeNumberEventHandler = (nthTerm: number): void => {
+    setEnteredNumber(nthTerm);
+  };
   return (
     <>
       <div className="w-full">
-        <Container isColumnArranged>
+        <Container isColumnArranged className="py-6">
           <Container>
             <Card justifyContent="center">
               <h1 className="text-2xl text-gray-900 font-semibold">
@@ -73,7 +79,10 @@ function App() {
               Enter a number to calculate the{' '}
               <span className="italic">n-th term</span>
             </h4>
-            <NumberSelector />
+            <NumberSelector onChangeNumberEvent={changeNumberEventHandler} />
+          </Card>
+          <Card>
+            <ResultViewer nthTerm={enteredNumber} />
           </Card>
         </Container>
       </div>

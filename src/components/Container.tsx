@@ -24,7 +24,7 @@ const Container: React.FC<ContainerProps> = ({
 }) => {
   return (
     <div
-      className={`w-full flex ${isColumnArranged ? 'flex-col' : ''} ${alignItems ? `items-${alignItems}` : ''} ${justifyContent ? `justify-${justifyContent}` : ''} ${gap ? gap : 'gap-4'} ${className && className}`}
+      className={`w-full flex ${isColumnArranged ? 'flex-col' : ''} ${alignItems ? `items-${alignItems}` : ''} ${justifyContent ? `justify-${justifyContent}` : ''} ${gap ? gap : 'gap-4'} ${className !== undefined ? className : ''}`}
     >
       {children}
     </div>

@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react';
 import Container from './Container';
 
 type InputTypes = 'manual' | 'auto';
+interface NumberSelectorProps {
+  onChangeNumberEvent: (nthTerm: number) => void;
+}
 
-const NumberSelector: React.FC = () => {
+const NumberSelector: React.FC<NumberSelectorProps> = ({
+  onChangeNumberEvent,
+}) => {
   const [isManualInput, setIsManualInput] = useState(false);
   const [inputType, setInputType] = useState<InputTypes>('auto');
   const [currentNumber, setCurrentNumber] = useState(1);
@@ -29,6 +34,10 @@ const NumberSelector: React.FC = () => {
     () => (isManualInput ? setInputType('manual') : setInputType('auto')),
     [isManualInput]
   );
+  useEffect(
+    () => onChangeNumberEvent(currentNumber),
+    [currentNumber, onChangeNumberEvent]
+  );
 
   const INPUT_COMPONENTS: Record<InputTypes, React.ReactNode> = {
     auto: (
@@ -52,7 +61,6 @@ const NumberSelector: React.FC = () => {
             <i className="fas fa-minus text-xl"></i>
           </button>
         </Container>
-        <p className="text lg text-gray-800">The result is: Auto</p>
       </Container>
     ),
     manual: (
@@ -75,8 +83,6 @@ const NumberSelector: React.FC = () => {
             required
           />
         </form>
-
-        <p className="text lg text-gray-800">The result is: Manual</p>
       </Container>
     ),
   };
