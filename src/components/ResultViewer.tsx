@@ -77,21 +77,21 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ nthTerm }) => {
               </p>
             </Container>
             <Container isColumnArranged>
-              <p className="text-xl text-amber-400">
-                The <span className="italic">{getNthTermLabel(nthTerm)}</span>{' '}
-                triangular number is:
-              </p>
-              <p className="text-4xl text-amber-400 font-bold">
-                {resultTriangular}
-              </p>
-            </Container>
-            <Container isColumnArranged>
               <p className="text-xl text-rose-400">
                 The <span className="italic">{getNthTermLabel(nthTerm)}</span>{' '}
                 prime number is:
               </p>
               <p className="text-4xl text-rose-400 font-bold">
                 {resultPrimeNumber}
+              </p>
+            </Container>
+            <Container isColumnArranged>
+              <p className="text-xl text-amber-400">
+                The <span className="italic">{getNthTermLabel(nthTerm)}</span>{' '}
+                triangular number is:
+              </p>
+              <p className="text-4xl text-amber-400 font-bold">
+                {resultTriangular}
               </p>
             </Container>
           </Container>

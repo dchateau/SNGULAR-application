@@ -54,4 +54,38 @@ describe('useCalculation', () => {
     expect(result.current.getNthTriangularNumber(44)).toBe(990);
     expect(result.current.getNthTriangularNumber(50)).toBe(1275);
   });
+
+  it("Should calculate the n-th term of a series, considering the formula '2fibonacci(n) + 3triangular(n) - 7primer(n)' using the terms previously computed", () => {
+    const { result } = renderHook(() => useCalculation());
+    // 4th term
+    expect(result.current.calculateNthSeriesTerm(3, 7, 10)).toBe(-13);
+    // 10th term
+    expect(result.current.calculateNthSeriesTerm(55, 29, 55)).toBe(72);
+    // 16th term
+    expect(result.current.calculateNthSeriesTerm(987, 53, 136)).toBe(2011);
+    // 20th term
+    expect(result.current.calculateNthSeriesTerm(6765, 71, 210)).toBe(13663);
+    // 24th term
+    expect(result.current.calculateNthSeriesTerm(46368, 89, 300)).toBe(93013);
+    // 28th term
+    expect(result.current.calculateNthSeriesTerm(317811, 107, 406)).toBe(
+      636091
+    );
+    // 32nd term
+    expect(result.current.calculateNthSeriesTerm(2178309, 131, 528)).toBe(
+      4357285
+    );
+    // 38th term
+    expect(result.current.calculateNthSeriesTerm(39088169, 163, 741)).toBe(
+      78177420
+    );
+    // 44th term
+    expect(result.current.calculateNthSeriesTerm(701408733, 193, 990)).toBe(
+      1402819085
+    );
+    // 50th term
+    expect(result.current.calculateNthSeriesTerm(12586269025, 229, 1275)).toBe(
+      25172540272
+    );
+  });
 });
