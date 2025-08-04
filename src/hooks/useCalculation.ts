@@ -112,9 +112,9 @@ const useCalculation = (): UseCalculationReturn => {
   const getNthTermFibonacciSeries = (nthTerm: number): number =>
     nthTerm >= 0 ? fibonacciSeries[nthTerm] : 0;
   const getNthPrimeNumber = (nthTerm: number): number =>
-    nthTerm >= 0 ? primeNumbers[nthTerm] : 0;
+    nthTerm >= 0 ? primeNumbers[nthTerm - 1] : 0;
   const getNthTriangularNumber = (nthTerm: number): number =>
-    nthTerm >= 0 ? triangleNumbers[nthTerm] : 0;
+    nthTerm >= 0 ? triangleNumbers[nthTerm - 1] : 0;
 
   return {
     getNthTermFibonacciSeries,

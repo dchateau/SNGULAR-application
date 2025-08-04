@@ -41,8 +41,8 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ nthTerm }) => {
 
   useEffect(() => {
     setResultFibonacci(getNthTermFibonacciSeries(nthTerm));
-    setResultPrimeNumber(getNthPrimeNumber(nthTerm - 1));
-    setResultTriangular(getNthTriangularNumber(nthTerm - 1));
+    setResultPrimeNumber(getNthPrimeNumber(nthTerm));
+    setResultTriangular(getNthTriangularNumber(nthTerm));
   }, [
     nthTerm,
     getNthTermFibonacciSeries,
