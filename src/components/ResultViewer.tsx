@@ -12,6 +12,7 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ nthTerm }) => {
   const [resultTriangular, setResultTriangular] = useState(0);
   const [resultPrimeNumber, setResultPrimeNumber] = useState(0);
   const {
+    calculateNthSeriesTerm,
     getNthTermFibonacciSeries,
     getNthPrimeNumber,
     getNthTriangularNumber,
@@ -103,9 +104,11 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ nthTerm }) => {
           <p className="text-xl text-gray-800">
             The final result is:{' '}
             <span className="font-bold">
-              {2 * resultFibonacci +
-                3 * resultTriangular -
-                7 * resultPrimeNumber}
+              {calculateNthSeriesTerm(
+                resultFibonacci,
+                resultPrimeNumber,
+                resultTriangular
+              )}
             </span>
           </p>
         </>

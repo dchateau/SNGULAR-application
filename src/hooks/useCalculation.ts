@@ -4,6 +4,11 @@ interface UseCalculationReturn {
   getNthTermFibonacciSeries: (nthTerm: number) => number;
   getNthPrimeNumber: (nthTerm: number) => number;
   getNthTriangularNumber: (nthTerm: number) => number;
+  calculateNthSeriesTerm: (
+    fibonacciTerm: number,
+    primeTerm: number,
+    triangularTerm: number
+  ) => number;
 }
 
 const useCalculation = (): UseCalculationReturn => {
@@ -94,6 +99,12 @@ const useCalculation = (): UseCalculationReturn => {
     return primesArray;
   };
 
+  const calculateNthSeriesTerm = (
+    fibonacciTerm: number,
+    primeTerm: number,
+    triangularTerm: number
+  ) => 2 * fibonacciTerm + 3 * triangularTerm - 7 * primeTerm;
+
   const fibonacciSeries = useMemo(() => calculateFibonacciSeries(), []);
   const primeNumbers = useMemo(() => calculatePrimeNumbers(), []);
   const triangleNumbers = useMemo(() => calculateTriangleNumbers(), []);
@@ -109,6 +120,7 @@ const useCalculation = (): UseCalculationReturn => {
     getNthTermFibonacciSeries,
     getNthPrimeNumber,
     getNthTriangularNumber,
+    calculateNthSeriesTerm,
   };
 };
 
